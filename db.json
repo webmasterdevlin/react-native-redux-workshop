@@ -1,28 +1,54 @@
 {
   "todos": [
     {
+      "id": "e2389dhhjmjhedshou",
+      "title": "code"
+    },
+    {
+      "id": "ggexzcxzrg3y6r",
+      "title": "eat"
+    },
+    {
+      "id": "fd89xchuerh",
+      "title": "sleep"
+    },
+    {
+      "id": "e238435439dhedshou",
+      "title": "play"
+    },
+    {
       "title": "Cook",
-      "description": "Cook steak",
-      "id": "GLGN0VP",
-      "finished": true
+      "id": "U5VboDu"
     },
     {
-      "title": "Pimp my Tesla",
-      "description": "Customize Tesla",
-      "id": "xBwkYid",
-      "finished": true
+      "title": "Play ps4",
+      "id": "xYzMzvy"
+    }
+  ],
+  "foods": [
+    {
+      "id": "4389fhous",
+      "name": "beef stew"
     },
     {
-      "title": "Coffee",
-      "description": "Latte",
-      "id": "-WG7nJg",
-      "finished": true
+      "id": "re43gre",
+      "name": "spring roll"
     },
     {
-      "title": "Coffee break",
-      "description": "Espresso",
-      "id": "At_SvVt",
-      "finished": false
+      "id": "54g54gr3t",
+      "name": "bbq chicken"
+    },
+    {
+      "id": "4yrt65y65ye",
+      "name": "Gelatos"
+    },
+    {
+      "name": "Pizza",
+      "id": "DhByXqW"
+    },
+    {
+      "name": "Lefse",
+      "id": "p4K3ESL"
     }
   ]
 }
