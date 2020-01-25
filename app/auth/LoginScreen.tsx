@@ -3,8 +3,32 @@ import { View, StyleSheet, StatusBar } from 'react-native'
 import { Headline, Paragraph, TextInput, Button } from 'react-native-paper';
 
 const LoginScreen: React.FC = () => {
-    return (<View>
-        
+    return (<View style={styles.base}>
+        <>
+            <StatusBar backgroundColor="#FFFFFF" barStyle="dark-content" />
+        </>
+        <View style={styles.appTitle}>
+                <Headline style={styles.appTitle}>TodoApp</Headline>
+                <Paragraph style={styles.appDesc}>
+                    Inmeta React Native Redux Course
+                </Paragraph>
+        </View>
+        <>
+            <View style={styles.divider}>
+                <TextInput label="*Username or email" />
+            </View>
+        </>
+        <>
+            <View style={styles.divider}>
+                <TextInput label="*Password" secureTextEntry />
+            </View>
+        </>
+        <>
+            <View style={styles.divider} />
+            <Button disabled={false} style={styles.btn}
+            mode="contained"
+            >Todo</Button>
+        </>
     </View>)
 };
 export default LoginScreen;
