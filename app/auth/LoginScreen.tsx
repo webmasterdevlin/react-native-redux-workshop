@@ -3,33 +3,49 @@ import { View, StyleSheet, StatusBar } from 'react-native'
 import { Headline, Paragraph, TextInput, Button } from 'react-native-paper';
 
 const LoginScreen: React.FC = () => {
-    return (<View style={styles.base}>
-        <>
-            <StatusBar backgroundColor="#FFFFFF" barStyle="dark-content" />
-        </>
-        <View style={styles.appTitle}>
+      return (
+        <View style={styles.base}>
+            <>
+                <StatusBar backgroundColor="#ffffff" barStyle="dark-content" />
+            </>
+
+            <View style={styles.header}>
                 <Headline style={styles.appTitle}>TodoApp</Headline>
                 <Paragraph style={styles.appDesc}>
-                    Inmeta React Native Redux Course
-                </Paragraph>
-        </View>
-        <>
-            <View style={styles.divider}>
-                <TextInput label="*Username or email" />
+                    Inmeta React Native Course.
+        </Paragraph>
             </View>
-        </>
-        <>
-            <View style={styles.divider}>
+
+            <>
+                <View style={styles.divider} />
+                <TextInput onChange={() => { }} label="*Username or email" />
+            </>
+
+            <>
+                <View style={styles.divider} />
                 <TextInput label="*Password" secureTextEntry />
-            </View>
-        </>
-        <>
-            <View style={styles.divider} />
-            <Button disabled={false} style={styles.btn}
-            mode="contained"
-            >Todo</Button>
-        </>
-    </View>)
+            </>
+
+            <>
+                <View style={styles.divider} />
+                <Button
+                    disabled={false}
+                    style={styles.btn}
+                    mode="contained">
+                    Todo
+        </Button>
+
+                <Button
+                    disabled={false}
+                    style={styles.btn}
+                    mode="outlined">
+                    Food
+        </Button>
+                <View style={styles.divider} />
+                <View style={styles.divider} />
+            </>
+        </View>
+    );
 };
 export default LoginScreen;
 
