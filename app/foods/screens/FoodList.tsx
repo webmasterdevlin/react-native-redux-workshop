@@ -1,6 +1,6 @@
 import React from 'react';
 import {View, StyleSheet, Alert} from 'react-native';
-import {Title, ActivityIndicator} from 'react-native-paper';
+import {Title, ActivityIndicator, Button} from 'react-native-paper';
 import {Dispatch} from 'redux';
 import {useSelector, useDispatch} from 'react-redux';
 import {fetchFoods} from '../food-actions';
@@ -29,12 +29,25 @@ const FoodList: React.FC<any> = props => {
             <ActivityIndicator animating size="large" />
           </View>
         ) : (
-          foods.map((f: IFoodModel) => (
-            <View key={f.id}>
-              <Title>{f.name}</Title>
-            </View>
-          ))
+          foods.map((f: IFoodModel) => 
+          
+          <Title>{f.name}</Title>
+          )
         )}
+        <View style={{flexDirection: 'row'}}>
+          {false ? (
+            <View style={{flexDirection: 'row'}}>
+              <Button>Cancel</Button>
+              <Button>Update</Button>
+            </View>
+          ) : (
+            <View style={{flexDirection: 'row'}}>
+              <Button icon="pencil" onPress={() => console.log()}></Button>
+              <Button icon="information" onPress={() => console.log()}></Button>
+              <Button icon="delete" onPress={() => console.log()}></Button>
+            </View>
+          )}
+        </View>
       </View>
     </View>
   );
