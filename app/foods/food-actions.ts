@@ -8,6 +8,7 @@ export const fetchFoods: ActionCreator<any> = () => {
     dispatch({
       type: FoodActionTypes.FETCH_FOODS_REQUEST,
     });
+    
     try {
       const {data} = await getFoods();
       dispatch({type: FoodActionTypes.FETCH_FOODS_SUCCESS, payload: data});
