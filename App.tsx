@@ -17,15 +17,18 @@ import {
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
 import RootNavigation from './app/navigation/root-navigation';
-import { Provider as PaperProvider } from 'react-native-paper';
-
-declare var global: { HermesInternal: null | {} };
+import {Provider as PaperProvider} from 'react-native-paper';
+import {Provider as StoreProvider} from 'react-redux';
+import store from './app/store';
+declare var global: {HermesInternal: null | {}};
 
 const App = () => {
   return (
-    <PaperProvider>
-      <RootNavigation />
-    </PaperProvider>
+    <StoreProvider store={store}>
+      <PaperProvider>
+        <RootNavigation />
+      </PaperProvider>
+    </StoreProvider>
   );
 };
 
