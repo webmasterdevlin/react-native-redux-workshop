@@ -45,7 +45,9 @@ const FoodList: React.FC<any> = props => {
                       onPress={() => console.log()}></Button>
                     <Button
                       icon="information"
-                      onPress={() => console.log()}></Button>
+                      onPress={() =>
+                        props.navigation.navigate('foodDetail', {obj: f})
+                      }></Button>
                     <Button
                       icon="delete"
                       onPress={() => console.log()}></Button>
