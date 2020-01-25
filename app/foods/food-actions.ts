@@ -34,3 +34,15 @@ export const removeFood: ActionCreator<any> = (id: string) => {
     }
   };
 };
+
+export const addFood: ActionCreator<any> = (food: IFoodModel) => {
+  return async (dispatch: Dispatch) => {
+    dispatch({
+      type: FoodActionTypes.ADD_FOOD_REQUEST,
+    })
+
+    try {
+      const {data} = await postFood(food);
+    }
+  }
+}

@@ -7,3 +7,7 @@ export async function getFoods() {
 export async function deleteFood(id: string) {
   return await api.delete<void>('foods/' + id);
 }
+
+export async function postFood(newFood: IFoodModel) {
+  return await api.post<IFoodModel>('foods/', newFood);
+}
