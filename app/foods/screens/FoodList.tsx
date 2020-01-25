@@ -2,14 +2,27 @@ import React from 'react';
 import {View, StyleSheet, Alert} from 'react-native';
 import {Title} from 'react-native-paper';
 import {Dispatch} from 'redux';
+import {useSelector, useDispatch} from 'react-redux';
 import {fetchFoods} from '../food-actions';
 import {Formik} from 'formik';
 import * as Yup from 'yup';
+import {IApplicationState} from '../../store';
 
 const FoodList: React.FC = () => {
+  const dispatch: Dispatch = useDispatch();
+  const {foods} = useSelector((s: IApplicationState) => s.foodReducer);
+
+  React.useEffect(() => {
+    dispatch(fetchFoods());
+  }, []);
+
   return (
     <View>
-      <Title>FoodList Works!</Title>
+      {foods.map((f: any) => (
+        <View key={f.id}>
+          <Title>{f.name}</Title>
+        </View>
+      ))}
     </View>
   );
 };

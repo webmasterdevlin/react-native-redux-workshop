@@ -1,4 +1,3 @@
-import {foodReducer} from './../foods/food-reducer';
 // @ts-ignore
 import logger from 'redux-logger';
 import {
