@@ -30,7 +30,7 @@ const FoodList: React.FC<any> = props => {
           </View>
         ) : (
           foods.map((f: IFoodModel) => (
-            <View>
+            <View key={f.id}>
               <Title>{f.name}</Title>
             </View>
           ))
