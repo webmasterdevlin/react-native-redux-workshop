@@ -12,6 +12,10 @@ const RootNavigation = () => {
                 <Stack.Screen
                     name="loginScreen"
                     component={LoginScreen} />
+                    <Stack.Screen 
+                        name="todoList"
+                        component={}
+                    />
             </Stack.Navigator>
         </NavigationNativeContainer>
     );
