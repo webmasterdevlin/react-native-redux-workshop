@@ -1,0 +1,28 @@
+{
+  "todos": [
+    {
+      "title": "Cook",
+      "description": "Cook steak",
+      "id": "GLGN0VP",
+      "finished": true
+    },
+    {
+      "title": "Pimp my Tesla",
+      "description": "Customize Tesla",
+      "id": "xBwkYid",
+      "finished": true
+    },
+    {
+      "title": "Coffee",
+      "description": "Latte",
+      "id": "-WG7nJg",
+      "finished": true
+    },
+    {
+      "title": "Coffee break",
+      "description": "Espresso",
+      "id": "At_SvVt",
+      "finished": false
+    }
+  ]
+}
