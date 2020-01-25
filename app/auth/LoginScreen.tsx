@@ -2,7 +2,7 @@ import React from 'react';
 import {View, StyleSheet, StatusBar} from 'react-native';
 import {Headline, Paragraph, TextInput, Button} from 'react-native-paper';
 
-const LoginScreen: React.FC = () => {
+const LoginScreen: React.FC<any> = props => {
   return (
     <View style={styles.base}>
       <>
@@ -28,7 +28,11 @@ const LoginScreen: React.FC = () => {
 
       <>
         <View style={styles.divider} />
-        <Button disabled={false} style={styles.btn} mode="contained">
+        <Button
+          onPress={() => props.navigation.navigate('todoList')}
+          disabled={false}
+          style={styles.btn}
+          mode="contained">
           Todo
         </Button>
 
