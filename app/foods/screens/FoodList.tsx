@@ -24,6 +24,7 @@ const FoodList: React.FC<any> = props => {
   const [food, setFood] = React.useState<IFoodModel>({
     name: '',
   } as IFoodModel);
+  const [forEditing, setForEditing] = React.useState<string>('0');
 
   React.useEffect(() => {
     dispatch(fetchFoods());
@@ -70,31 +71,45 @@ const FoodList: React.FC<any> = props => {
           </View>
         ) : (
           foods.map((f: IFoodModel) => (
-            <View style={styles.cell}>
-              {false ? <View></View> : <Title>{f.name}</Title>}
-              <View style={{flexDirection: 'row'}}>
-                {false ? (
+            <Formik
+              key={f.id}
+              initialValues={{}}
+              onSubmit={(values, actions) => {}}>
+              {formikProps => (
+                <View style={styles.cell}>
+                  {forEditing === f.id ? (
+                    <View style={styles.input}>
+                      <TextInput mode="outlined" multiline={true} />
+                      <HelperText type={'error'}></HelperText>
+                    </View>
+                  ) : (
+                    <Title>{f.name}</Title>
+                  )}
                   <View style={{flexDirection: 'row'}}>
-                    <Button>Cancel</Button>
-                    <Button>Update</Button>
+                    {forEditing === f.id ? (
+                      <View style={{flexDirection: 'row'}}>
+                        <Button>Cancel</Button>
+                        <Button>Update</Button>
+                      </View>
+                    ) : (
+                      <View style={{flexDirection: 'row'}}>
+                        <Button
+                          icon="pencil"
+                          onPress={() => setForEditing(f.id)}></Button>
+                        <Button
+                          icon="information"
+                          onPress={() =>
+                            props.navigation.navigate('foodDetail', {obj: f})
+                          }></Button>
+                        <Button
+                          icon="delete"
+                          onPress={() => dispatch(removeFood(f.id))}></Button>
+                      </View>
+                    )}
                   </View>
-                ) : (
-                  <View style={{flexDirection: 'row'}}>
-                    <Button
-                      icon="pencil"
-                      onPress={() => console.log()}></Button>
-                    <Button
-                      icon="information"
-                      onPress={() =>
-                        props.navigation.navigate('foodDetail', {obj: f})
-                      }></Button>
-                    <Button
-                      icon="delete"
-                      onPress={() => dispatch(removeFood(f.id))}></Button>
-                  </View>
-                )}
-              </View>
-            </View>
+                </View>
+              )}
+            </Formik>
           ))
         )}
       </View>
