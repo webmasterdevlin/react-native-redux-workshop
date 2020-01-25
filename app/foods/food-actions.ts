@@ -1,6 +1,6 @@
 import {Dispatch, ActionCreator} from 'redux';
 import {IFoodModel, FoodActionTypes} from './food-types';
-import {getFoods, deleteFood} from './food-service';
+import {getFoods, deleteFood, postFood} from './food-service';
 
 /* action creators of thunk */
 export const fetchFoods: ActionCreator<any> = () => {
@@ -39,10 +39,15 @@ export const addFood: ActionCreator<any> = (food: IFoodModel) => {
   return async (dispatch: Dispatch) => {
     dispatch({
       type: FoodActionTypes.ADD_FOOD_REQUEST,
-    })
-
+    });
     try {
       const {data} = await postFood(food);
+      dispatch({type: FoodActionTypes.ADD_FOOD_SUCCESS, payload: data});
+    } catch (e) {
+      dispatch({
+        type: FoodActionTypes.ADD_FOOD_FAIL,
+        payload: e.message,
+      });
     }
-  }
-}
+  };
+};

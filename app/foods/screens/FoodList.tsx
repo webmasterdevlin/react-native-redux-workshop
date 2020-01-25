@@ -1,10 +1,16 @@
 import React from 'react';
 import {View, StyleSheet, Alert} from 'react-native';
-import {Title, ActivityIndicator, Button} from 'react-native-paper';
+import {
+  Title,
+  ActivityIndicator,
+  Button,
+  TextInput,
+  HelperText,
+} from 'react-native-paper';
 import {Dispatch} from 'redux';
 import {useSelector, useDispatch} from 'react-redux';
-import {fetchFoods, removeFood} from '../food-actions';
-import {Formik} from 'formik';
+import {fetchFoods, removeFood, addFood} from '../food-actions';
+import {Formik, validateYupSchema} from 'formik';
 import * as Yup from 'yup';
 import {IApplicationState} from '../../store';
 
@@ -15,14 +21,48 @@ const FoodList: React.FC<any> = props => {
   const {foods, isLoading} = useSelector(
     (s: IApplicationState) => s.foodReducer,
   );
+  const [food, setFood] = React.useState<IFoodModel>({
+    name: '',
+  } as IFoodModel);
 
   React.useEffect(() => {
     dispatch(fetchFoods());
   }, []);
 
+  const validationSchema = Yup.object().shape({
+    name: Yup.string()
+      .label('Name')
+      .min(2, 'Name must have at least 2 characters')
+      .max(120)
+      .required(),
+  });
+
   return (
     <View style={styles.container}>
-      <View style={{marginBottom: 20}}></View>
+      <View style={{marginBottom: 20}}>
+        <Formik
+          initialValues={food}
+          validationSchema={validationSchema}
+          onSubmit={(values, actions) => {
+            dispatch(addFood(values));
+            actions.resetForm();
+          }}>
+          {formikProps => (
+            <View>
+              <TextInput
+                onChangeText={formikProps.handleChange('name')}
+                onBlur={formikProps.handleBlur('name')}
+                value={formikProps.values.name}
+                label="what's new?"
+              />
+              <HelperText type={'error'}>{formikProps.errors.name}</HelperText>
+              <Button mode="contained" onPress={formikProps.handleSubmit}>
+                Save
+              </Button>
+            </View>
+          )}
+        </Formik>
+      </View>
       <View style={styles.list}>
         {isLoading ? (
           <View style={styles.loaderBase}>

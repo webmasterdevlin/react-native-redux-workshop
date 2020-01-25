@@ -33,6 +33,15 @@ export const foodReducer = (state = initialState, action: IAction) => {
         foods: state.foods.filter(f => f.id !== action.payload),
       };
 
+    case FoodActionTypes.ADD_FOOD_REQUEST:
+      return {...state, isLoading: true};
+    case FoodActionTypes.ADD_FOOD_SUCCESS:
+      return {
+        ...state,
+        isLoading: false,
+        foods: [...state.foods, action.payload],
+      };
+
     default:
       return state;
   }
