@@ -36,7 +36,11 @@ const LoginScreen: React.FC<any> = props => {
           Todo
         </Button>
 
-        <Button disabled={false} style={styles.btn} mode="outlined">
+        <Button
+          onPress={() => props.navigation.navigate('foodList')}
+          disabled={false}
+          style={styles.btn}
+          mode="outlined">
           Food
         </Button>
         <View style={styles.divider} />
