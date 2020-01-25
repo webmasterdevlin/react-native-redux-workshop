@@ -3,7 +3,7 @@ import {View, StyleSheet, Alert} from 'react-native';
 import {Title, ActivityIndicator, Button} from 'react-native-paper';
 import {Dispatch} from 'redux';
 import {useSelector, useDispatch} from 'react-redux';
-import {fetchFoods} from '../food-actions';
+import {fetchFoods, removeFood} from '../food-actions';
 import {Formik} from 'formik';
 import * as Yup from 'yup';
 import {IApplicationState} from '../../store';
@@ -50,7 +50,7 @@ const FoodList: React.FC<any> = props => {
                       }></Button>
                     <Button
                       icon="delete"
-                      onPress={() => console.log()}></Button>
+                      onPress={() => dispatch(removeFood(f.id))}></Button>
                   </View>
                 )}
               </View>

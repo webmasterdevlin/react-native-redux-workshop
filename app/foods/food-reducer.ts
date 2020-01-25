@@ -24,6 +24,15 @@ export const foodReducer = (state = initialState, action: IAction) => {
     case FoodActionTypes.FETCH_FOODS_FAIL:
       return {...state, isLoading: false, error: action.payload};
 
+    case FoodActionTypes.REMOVE_FOOD_REQUEST:
+      return {...state, isLoading: true};
+    case FoodActionTypes.REMOVE_FOOD_SUCCESS:
+      return {
+        ...state,
+        isLoading: false,
+        foods: state.foods.filter(f => f.id !== action.payload),
+      };
+
     default:
       return state;
   }
