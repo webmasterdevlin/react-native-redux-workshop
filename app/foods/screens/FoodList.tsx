@@ -9,4 +9,33 @@ const FoodList: React.FC = () => {
     </View>
   );
 };
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    margin: 20,
+  },
+  loaderBase: {
+    flex: 1,
+    margin: 10,
+    alignContent: 'center',
+    justifyContent: 'center',
+  },
+  input: {
+    width: '40%',
+    fontSize: 20,
+  },
+  list: {
+    flex: 1,
+    justifyContent: 'flex-start',
+  },
+  cell: {
+    flex: 0,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    marginBottom: 20,
+  },
+});
+
 export default FoodList;
