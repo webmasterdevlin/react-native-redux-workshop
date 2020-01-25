@@ -29,25 +29,32 @@ const FoodList: React.FC<any> = props => {
             <ActivityIndicator animating size="large" />
           </View>
         ) : (
-          foods.map((f: IFoodModel) => 
-          
-          <Title>{f.name}</Title>
-          )
+          foods.map((f: IFoodModel) => (
+            <View style={styles.cell}>
+              {false ? <View></View> : <Title>{f.name}</Title>}
+              <View style={{flexDirection: 'row'}}>
+                {false ? (
+                  <View style={{flexDirection: 'row'}}>
+                    <Button>Cancel</Button>
+                    <Button>Update</Button>
+                  </View>
+                ) : (
+                  <View style={{flexDirection: 'row'}}>
+                    <Button
+                      icon="pencil"
+                      onPress={() => console.log()}></Button>
+                    <Button
+                      icon="information"
+                      onPress={() => console.log()}></Button>
+                    <Button
+                      icon="delete"
+                      onPress={() => console.log()}></Button>
+                  </View>
+                )}
+              </View>
+            </View>
+          ))
         )}
-        <View style={{flexDirection: 'row'}}>
-          {false ? (
-            <View style={{flexDirection: 'row'}}>
-              <Button>Cancel</Button>
-              <Button>Update</Button>
-            </View>
-          ) : (
-            <View style={{flexDirection: 'row'}}>
-              <Button icon="pencil" onPress={() => console.log()}></Button>
-              <Button icon="information" onPress={() => console.log()}></Button>
-              <Button icon="delete" onPress={() => console.log()}></Button>
-            </View>
-          )}
-        </View>
       </View>
     </View>
   );
