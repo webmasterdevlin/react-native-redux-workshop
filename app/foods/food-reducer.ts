@@ -41,7 +41,7 @@ export const foodReducer = (state = initialState, action: IAction) => {
         isLoading: false,
         foods: [...state.foods, action.payload],
       };
-
+    // TODO: cases for UPDATE Requests
     default:
       return state;
   }

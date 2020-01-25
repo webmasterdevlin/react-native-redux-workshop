@@ -11,3 +11,5 @@ export async function deleteFood(id: string) {
 export async function postFood(newFood: IFoodModel) {
   return await api.post<IFoodModel>('foods/', newFood);
 }
+
+// TODO: PUT Request

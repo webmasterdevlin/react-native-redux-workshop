@@ -74,13 +74,19 @@ const FoodList: React.FC<any> = props => {
             <Formik
               key={f.id}
               initialValues={{}}
-              onSubmit={(values, actions) => {}}>
+              onSubmit={(values, actions) => {
+                // TODO: dispatch!
+              }}>
               {formikProps => (
                 <View style={styles.cell}>
                   {forEditing === f.id ? (
                     <View style={styles.input}>
                       <TextInput mode="outlined" multiline={true} />
-                      <HelperText type={'error'}></HelperText>
+                      <HelperText type={'error'}>
+                        {
+                          // TODO: error message from Yup validation
+                        }
+                      </HelperText>
                     </View>
                   ) : (
                     <Title>{f.name}</Title>

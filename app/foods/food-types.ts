@@ -26,4 +26,6 @@ export const FoodActionTypes = {
   ADD_FOOD_REQUEST: '@@/food/ADD_FOOD_REQUEST',
   ADD_FOOD_SUCCESS: '@@/food/ADD_FOOD_SUCCESS',
   ADD_FOOD_FAIL: '@@/food/ADD_FOOD_FAIL',
+
+  // TODO: UPDATE!
 };
