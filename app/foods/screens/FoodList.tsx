@@ -1,6 +1,6 @@
 import React from 'react';
 import {View, StyleSheet, Alert} from 'react-native';
-import {Title} from 'react-native-paper';
+import {Title, ActivityIndicator} from 'react-native-paper';
 import {Dispatch} from 'redux';
 import {useSelector, useDispatch} from 'react-redux';
 import {fetchFoods} from '../food-actions';
@@ -8,21 +8,34 @@ import {Formik} from 'formik';
 import * as Yup from 'yup';
 import {IApplicationState} from '../../store';
 
-const FoodList: React.FC = () => {
+import {IFoodModel} from '../food-types';
+
+const FoodList: React.FC<any> = props => {
   const dispatch: Dispatch = useDispatch();
-  const {foods} = useSelector((s: IApplicationState) => s.foodReducer);
+  const {foods, isLoading} = useSelector(
+    (s: IApplicationState) => s.foodReducer,
+  );
 
   React.useEffect(() => {
     dispatch(fetchFoods());
   }, []);
 
   return (
-    <View>
-      {foods.map((f: any) => (
-        <View key={f.id}>
-          <Title>{f.name}</Title>
-        </View>
-      ))}
+    <View style={styles.container}>
+      <View style={{marginBottom: 20}}></View>
+      <View style={styles.list}>
+        {isLoading ? (
+          <View style={styles.loaderBase}>
+            <ActivityIndicator animating size="large" />
+          </View>
+        ) : (
+          foods.map((f: IFoodModel) => (
+            <View>
+              <Title>{f.name}</Title>
+            </View>
+          ))
+        )}
+      </View>
     </View>
   );
 };
