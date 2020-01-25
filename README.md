@@ -1,5 +1,4 @@
-## React Native TypeScript and React Navigation vNext (5.0)
-
+# React Native Redux TypeScript
 Let's create a React Native app with TypeScript and React Navigation vNext (5.0) by using the builder below.
 
 ####Requirements:
@@ -54,20 +53,3 @@ then link the react native vector icons
 ```sh
 $ react-native link react-native-vector-icons
 ```
-
-create the directories and files below
-- app/auth/LoginScreen.tsx
-- app/navigation/root-navigation.tsx 
-
-Just copy and paste the content of each file. Also edit the App.tsx
-
-To run the app
-```sh
-$ npm run android
-```
-or
-```sh
-$ npm run ios
-```
-
-![app](./assets/react-native-paper.png)
