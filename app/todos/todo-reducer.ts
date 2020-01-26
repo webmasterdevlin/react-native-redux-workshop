@@ -34,6 +34,16 @@ export const todoReducer = (
       };
     case TodoActionTypes.REMOVE_TODO_FAIL:
       return {...state, isLoading: false, error: action.payload};
+    case TodoActionTypes.ADD_TODO_REQUEST:
+      return {...state, isLoading: true};
+    case TodoActionTypes.ADD_TODO_SUCCESS:
+      return {
+        ...state,
+        isLoading: false,
+        todos: [...state.todos, action.payload],
+      };
+    case TodoActionTypes.ADD_TODO_FAIL:
+      return {...state, isLoading: false, error: action.payload};
 
     default:
       return state;
