@@ -15,6 +15,13 @@ function* fetchingTodos() {
     });
   }
 }
+
+function* removingTodo({payload: id}): any {
+    try {
+        yield call(deleteTodo)
+    }
+}
+
 /* Saga watches actions */
 function* watchFetchingTodos() {
   yield takeEvery(TodoActionTypes.FETCH_TODOS_REQUEST, fetchingTodos);
