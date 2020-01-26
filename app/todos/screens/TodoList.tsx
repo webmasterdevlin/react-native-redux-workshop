@@ -22,7 +22,7 @@ const TodoList: React.FC = () => {
   return (
     <View>
       {todos.map((t: ITodoModel) => (
-        <Title>{t.title}</Title>
+        <Title key={t.id}>{t.title}</Title>
       ))}
     </View>
   );
