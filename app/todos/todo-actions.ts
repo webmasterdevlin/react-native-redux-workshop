@@ -9,4 +9,3 @@ interface IAction extends Action {
 export const fetchTodos = (): IAction => ({
   type: TodoActionTypes.FETCH_TODOS_REQUEST,
 });
-
