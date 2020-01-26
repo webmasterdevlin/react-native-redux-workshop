@@ -1,10 +1,10 @@
 import React from 'react';
 import {View, StyleSheet, Alert} from 'react-native';
-import {Title} from 'react-native-paper';
+import {Button, Title} from 'react-native-paper';
 
 import {useSelector, useDispatch} from 'react-redux';
 
-import {fetchTodos} from '../todo-actions';
+import {fetchTodos, removeTodo} from '../todo-actions';
 import {ITodoModel} from '../todo-types';
 
 import {Dispatch} from 'redux';
@@ -20,10 +20,21 @@ const TodoList: React.FC = () => {
   }, []);
 
   return (
-    <View>
-      {todos.map((t: ITodoModel) => (
-        <Title key={t.id}>{t.title}</Title>
-      ))}
+    <View style={styles.container}>
+      <View style={styles.list}>
+        {todos.map((t: ITodoModel) => (
+          <View key={t.id} style={styles.cell}>
+            <Title>{t.title}</Title>
+            <View style={{flexDirection: 'row'}}>
+              <Button icon="pencil">{''}</Button>
+              <Button icon="information">{''}</Button>
+              <Button icon="delete" onPress={() => dispatch(removeTodo(t.id))}>
+                {''}
+              </Button>
+            </View>
+          </View>
+        ))}
+      </View>
     </View>
   );
 };
