@@ -9,3 +9,8 @@ interface IAction extends Action {
 export const fetchTodos = (): IAction => ({
   type: TodoActionTypes.FETCH_TODOS_REQUEST,
 });
+
+export const removeTodo = (id: string): IAction => ({
+  type: TodoActionTypes.REMOVE_TODO_REQUEST,
+  payload: id,
+});
