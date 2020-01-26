@@ -9,5 +9,23 @@ const initialState: ITodoState = {
 };
 
 interface IAction extends Action {
-  readonly payload?: any;
+  payload?: any;
+  type: string;
 }
+
+export const todoReducer = (
+  state: ITodoState = initialState,
+  action: IAction,
+): ITodoState => {
+  switch (action.type) {
+    case TodoActionTypes.FETCH_TODOS_REQUEST:
+      return {...state, isLoading: true};
+    case TodoActionTypes.FETCH_TODOS_SUCCESS:
+      return {...state, isLoading: false, todos: action.payload};
+    case TodoActionTypes.FETCH_TODOS_FAIL:
+      return {...state, isLoading: false, error: action.payload};
+
+    default:
+      return state;
+  }
+};
