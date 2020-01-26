@@ -1,4 +1,4 @@
-export interface ITodoShape {
+export interface ITodoState {
   readonly todos: ITodoModel[];
   readonly todo: ITodoModel;
   readonly isLoading: boolean;
@@ -17,5 +17,5 @@ export const TodoActionTypes = {
   FETCH_TODOS_REQUEST: '@@/todo/FETCH_TODOS_REQUEST',
   FETCH_TODOS_SUCCESS: '@@/todo/FETCH_TODOS_SUCCESS',
   FETCH_TODOS_FAIL: '@@/todo/FETCH_TODOS_FAIL',
-  
+
 };
