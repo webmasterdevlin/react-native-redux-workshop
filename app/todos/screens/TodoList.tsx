@@ -10,7 +10,7 @@ import {
 
 import {useSelector, useDispatch} from 'react-redux';
 
-import {fetchTodos, removeTodo} from '../todo-actions';
+import {fetchTodos, removeTodo, addTodo} from '../todo-actions';
 import {ITodoModel} from '../todo-types';
 
 import {Dispatch} from 'redux';
@@ -49,7 +49,7 @@ const TodoList: React.FC<any> = props => {
           initialValues={todo}
           validationSchema={validationSchema}
           onSubmit={(values, actions) => {
-            //  TODO: dispatch(an action)
+            dispatch(addTodo(values));
             actions.resetForm();
           }}>
           {formikProps => (
