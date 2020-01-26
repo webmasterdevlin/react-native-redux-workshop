@@ -14,3 +14,8 @@ export const removeTodo = (id: string): IAction => ({
   type: TodoActionTypes.REMOVE_TODO_REQUEST,
   payload: id,
 });
+
+export const addTodo = (todo: ITodoModel): IAction => ({
+  type: TodoActionTypes.ADD_TODO_REQUEST,
+  payload: todo,
+});
