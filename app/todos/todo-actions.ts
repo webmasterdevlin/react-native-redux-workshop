@@ -2,7 +2,7 @@
 import {ITodoModel, TodoActionTypes} from './todo-types';
 import {Action} from 'redux';
 
-interface IAction extends Action {
+export interface IAction extends Action {
   readonly payload?: any;
 }
 

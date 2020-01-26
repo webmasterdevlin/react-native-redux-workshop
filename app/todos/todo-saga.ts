@@ -2,6 +2,7 @@ import {put, takeEvery, call} from 'redux-saga/effects';
 import {all} from '@redux-saga/core/effects';
 import {TodoActionTypes} from './todo-types';
 import {getTodos, deleteTodo} from './todo-service';
+import { IAction } from './todo-actions';
 
 /* function generator implementations of Saga */
 function* fetchingTodos() {
@@ -16,7 +17,7 @@ function* fetchingTodos() {
   }
 }
 // renaming the payload with id
-function* removingTodo({payload: id}): any {
+function* removingTodo({payload: id} : IAction): any {
   try {
     yield call(deleteTodo, id);
     yield put({type: TodoActionTypes.REMOVE_TODO_SUCCESS, payload: id});
