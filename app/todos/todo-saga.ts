@@ -2,7 +2,6 @@ import {put, takeEvery, call} from 'redux-saga/effects';
 import {all} from '@redux-saga/core/effects';
 import {TodoActionTypes} from './todo-types';
 import {getTodos, deleteTodo} from './todo-service';
-import {fetchTodos, removeTodo} from './todo-actions';
 
 /* function generator implementations of Saga */
 function* fetchingTodos() {
@@ -31,10 +30,10 @@ function* removingTodo({payload: id}: any) {
 
 /* Saga watches actions */
 function* watchFetchingTodos() {
-  yield takeEvery(TodoActionTypes.FETCH_TODOS_REQUEST, fetchTodos);
+  yield takeEvery(TodoActionTypes.FETCH_TODOS_REQUEST, fetchingTodos);
 }
 function* watchRemovingTodo() {
-  yield takeEvery(TodoActionTypes.REMOVE_TODO_REQUEST, removeTodo);
+  yield takeEvery(TodoActionTypes.REMOVE_TODO_REQUEST, removingTodo);
 }
 
 /* Saga sends all the watchers to the sagaMiddleware to run */
