@@ -10,7 +10,7 @@ import {ITodoModel} from '../todo-types';
 import {Dispatch} from 'redux';
 import {IApplicationState} from '../../store';
 
-const TodoList: React.FC = () => {
+const TodoList: React.FC<any> = props => {
   /* part of Redux pattern */
   const dispatch: Dispatch = useDispatch();
   const {todos, isLoading} = useSelector(
@@ -34,7 +34,15 @@ const TodoList: React.FC = () => {
               <Title>{t.title}</Title>
               <View style={{flexDirection: 'row'}}>
                 <Button icon="pencil">{''}</Button>
-                <Button icon="information">{''}</Button>
+                <Button
+                  icon="information"
+                  onPress={() =>
+                    props.navigation.navigate('todoDetail', {
+                      obj: t,
+                    })
+                  }>
+                  {''}
+                </Button>
                 <Button
                   icon="delete"
                   onPress={() => dispatch(removeTodo(t.id))}>
