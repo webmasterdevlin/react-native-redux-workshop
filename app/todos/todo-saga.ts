@@ -1,13 +1,20 @@
 import {put, takeEvery, call} from 'redux-saga/effects';
 import {all} from '@redux-saga/core/effects';
-import {TodoActionTypes} from './todo-types';
+import {TodoActionTypes, ITodoModel} from './todo-types';
 import {getTodos, deleteTodo, postTodo} from './todo-service';
 
 /* function generator implementations of Saga */
 function* fetchingTodos() {
   try {
     const {data} = yield call(getTodos); // saga
-    yield put({type: TodoActionTypes.FETCH_TODOS_SUCCESS, payload: data});
+
+    // sorting in alphabetical way
+    const sortedData: ITodoModel[] = data.sort(
+      (firstItem: ITodoModel, secondItem: ITodoModel) =>
+        firstItem.title.toLowerCase() < secondItem.title.toLowerCase() ? -1 : 1,
+    );
+
+    yield put({type: TodoActionTypes.FETCH_TODOS_SUCCESS, payload: sortedData});
   } catch (e) {
     yield put({
       type: TodoActionTypes.FETCH_TODOS_FAIL,
