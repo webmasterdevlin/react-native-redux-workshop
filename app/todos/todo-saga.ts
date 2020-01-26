@@ -15,3 +15,11 @@ function* fetchingTodos() {
     });
   }
 }
+/* Saga watches actions */
+function* watchFetchingTodos() {
+  yield takeEvery(TodoActionTypes.FETCH_TODOS_REQUEST, fetchingTodos);
+}
+/* Saga sends all the watchers to the sagaMiddleware to run */
+export function* todoSaga() {
+  yield all([watchFetchingTodos()]);
+}
