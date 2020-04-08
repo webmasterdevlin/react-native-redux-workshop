@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {NavigationNativeContainer} from '@react-navigation/native';
+import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 import LoginScreen from '../auth/LoginScreen';
 import TodoList from '../todos/screens/TodoList';
@@ -11,7 +11,7 @@ const Stack = createStackNavigator();
 
 const RootNavigation = () => {
   return (
-    <NavigationNativeContainer>
+    <NavigationContainer>
       <Stack.Navigator initialRouteName="loginScreen">
         <Stack.Screen
           name="loginScreen"
@@ -39,7 +39,7 @@ const RootNavigation = () => {
           options={{title: 'Food Detail'}}
         />
       </Stack.Navigator>
-    </NavigationNativeContainer>
+    </NavigationContainer>
   );
 };
 export default RootNavigation;
